@@ -1,3 +1,8 @@
 <Solution>
+  <Folder Name="/Solution Items/" />
+  <Project Path="Stories.Data/Stories.Data.csproj" Id="bc17058c-5fb5-499f-aa94-4449956e0c25" />
+  <Project Path="Stories.DataModels/Stories.DataModels.csproj" Id="8709cb7e-a0b1-4aef-88b1-38bbfaf30ec2" />
+  <Project Path="Stories.Services/Stories.Services.csproj" Id="93ed50db-ab73-473f-8cb8-d4c2525b41cb" />
+  <Project Path="Stories.ViewModels/Stories.ViewModels.csproj" Id="d07a57a7-0563-4179-84cf-43987e805cce" />
   <Project Path="Stories.Web/Stories.Web.csproj" />
 </Solution>

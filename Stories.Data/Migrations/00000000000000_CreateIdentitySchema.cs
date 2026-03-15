@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Stories.Web.Data.Migrations
+namespace Stories.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
