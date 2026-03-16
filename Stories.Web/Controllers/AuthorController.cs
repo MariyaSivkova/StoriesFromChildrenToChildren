@@ -32,7 +32,7 @@ namespace Stories.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(AuthorAddViewModel model)
+        public async Task<IActionResult> Add(AuthorAddViewModel model)
         {
             if (!ModelState.IsValid)
             {
