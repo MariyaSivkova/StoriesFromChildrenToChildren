@@ -1,37 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.ComponentModel.DataAnnotations;
+using static Stories.DataModels.Common.EntityValidation;
+using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Stories.DataModels
 {
     public class Book
-    {
-        public Book()
-        {
-            this.Authors = new HashSet<Author>();
-            this.Categories = new HashSet<Category>();
-            this.Date = DateTime.Now;
-            this.PathToCover = StoriesConstants.DefaultCover;
-
-        }
-
+    {       
+        [Key]
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string PathToAudiobook { get; set; }
-        public string PathToCover { get; set; }
-        public string Annotation { get; set; }
+
+        [Required]
+        [MaxLength(BookTitleMaxLength)]
+        public string Title { get; set; } = null!;
+
+        [Required]
+        public string PathToAudiobook { get; set; } = null!;
+
+        public string PathToCover { get; set; } = StoriesConstants.DefaultCover;
+
+        [Required]
+        [MaxLength(BookAnnotationMaxLength)]
+        public string Annotation { get; set; } = null!;
+
+        [MaxLength(BookDescriptionMaxLength)]
         public string Description { get; set; }
-        public string ReadersPartiality { get; set; }
+        
+        public DateTime Date { get; set; } = DateTime.Now;
 
-        public DateTime Date { get; set; }
-        public virtual ICollection<Author> Authors { get; set; } = null!;
-        public virtual ICollection<Category> Categories { get; set; } = null!;
-
+        [Required]
+        [ForeignKey(nameof(IdentityUser))]
         public string UserId { get; set; } = null!;
+        public virtual IdentityUser User { get; set; } = null!;
 
-        public bool IsApproved { get; set; }
+        [Required]
+        [ForeignKey(nameof(Author))]
+        public string AuthorId { get; set; } = null!;
+        public virtual Author Author { get; set; } = null!;
+
+        [Required]
+        [ForeignKey(nameof(Category))]
+        public string CategoryId { get; set; } = null!;
+        public virtual Category Category { get; set; } = null!;
+
+
+        //TODO at stage 2: 
+        //public bool IsApproved { get; set; }
+        //public string ReadersPartiality { get; set; }
+        //public virtual ICollection<Author> Authors { get; set; } = new HashSet<Author>();
+        //public virtual ICollection<Category> Categories { get; set; } = new HashSet<Category>();
 
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Stories.ViewModels.Author
 {
-    public class AuthorVM
+    public class AuthorViewModel
     {
         public int Id { get; set; }
 

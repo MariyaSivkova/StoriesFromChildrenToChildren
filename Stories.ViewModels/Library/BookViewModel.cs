@@ -17,7 +17,7 @@ namespace Stories.ViewModels.Library
         public string Title { get; set; } = null!;
 
 
-        public List<AuthorVM> Authors { get; set; } = null!;
+        public List<AuthorViewModel> Authors { get; set; } = null!;
 
 
         public List<CategoryViewModel> Categories { get; set; } = null!;
