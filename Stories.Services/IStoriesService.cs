@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stories.ViewModels.Author;
+using Stories.ViewModels.Category;
 using Stories.ViewModels.Library;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,14 @@ namespace Stories.Services
         Task<AuthorViewModel> GetAuthorForEditAsync(int id);
 
         Task EditAuthorAsync(AuthorViewModel model);
+
+
+        Task<IEnumerable<CategoryViewModel>> GetAllCategoriesAsync();
+
+        Task AddCategoryAsync(CategoryAddViewModel model);
+
+        Task<CategoryViewModel> GetCategoryForEditAsync(int id);
+
+        Task EditCategoryAsync(CategoryViewModel model);
     }
 }

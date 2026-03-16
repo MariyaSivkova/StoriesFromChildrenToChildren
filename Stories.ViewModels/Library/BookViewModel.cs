@@ -1,5 +1,6 @@
 ﻿using Stories.DataModels;
 using Stories.ViewModels.Author;
+using Stories.ViewModels.Category;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

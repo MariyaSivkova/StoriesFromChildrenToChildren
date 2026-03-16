@@ -2,6 +2,7 @@
 using Stories.Data;
 using Stories.DataModels;
 using Stories.ViewModels.Author;
+using Stories.ViewModels.Category;
 using Stories.ViewModels.Library;
 
 namespace Stories.Services
@@ -15,6 +16,7 @@ namespace Stories.Services
             this.dbContext = dbContext;
         }
 
+        // About Authors:
         public async Task<IEnumerable<AuthorViewModel>> GetAllAuthorsAsync()
         {
             return await dbContext.Authors
@@ -75,6 +77,64 @@ namespace Stories.Services
             author.FirstName = model.FirstName;
             author.LastName = model.LastName;
             author.Biography = model.Biography;
+
+            await dbContext.SaveChangesAsync();
+        }
+
+        // About Categories:
+
+        public async Task<IEnumerable<CategoryViewModel>> GetAllCategoriesAsync()
+        {
+            return await dbContext.Categories
+                .AsNoTracking()
+                .Select(r => new CategoryViewModel
+                {
+                    Id = r.Id,
+                    CategoryName = r.CategoryName,
+                })
+                .ToListAsync();
+        }
+        
+        public async Task AddCategoryAsync(CategoryAddViewModel model)
+        {
+
+            Category newCategory = new Category
+            {
+                CategoryName = model.CategoryName,
+            };
+
+            dbContext.Categories.Add(newCategory);
+            await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<CategoryViewModel> GetCategoryForEditAsync(int id)
+        {
+            Category? category = await dbContext.Categories
+                .FirstOrDefaultAsync(a => a.Id == id);
+
+            if (category == null)
+            {
+                throw new ArgumentException("Category not found.");
+            }
+
+            return new CategoryViewModel
+            {
+                Id = category.Id,
+                CategoryName = category.CategoryName,
+            };
+        }
+
+        public async Task EditCategoryAsync(CategoryViewModel model)
+        {
+            Category? category = await dbContext.Categories
+                .FirstOrDefaultAsync(a => a.Id == model.Id);
+
+            if (category == null)
+            {
+                throw new ArgumentException("Category not found.");
+            }
+
+            category.CategoryName = model.CategoryName;
 
             await dbContext.SaveChangesAsync();
         }

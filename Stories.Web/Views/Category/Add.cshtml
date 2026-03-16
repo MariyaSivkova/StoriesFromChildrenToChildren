@@ -1,0 +1,25 @@
+@using Stories.ViewModels.Category
+@model CategoryAddViewModel
+@{
+    ViewData["Title"] = "Add Category";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="CategoryName" class="control-label"></label>
+        <input asp-for="CategoryName" class="form-control" />
+        <span asp-validation-for="CategoryName" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Add</button>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
