@@ -36,12 +36,12 @@ namespace Stories.DataModels
 
         [Required]
         [ForeignKey(nameof(Author))]
-        public string AuthorId { get; set; } = null!;
+        public int AuthorId { get; set; } 
         public virtual Author Author { get; set; } = null!;
 
         [Required]
         [ForeignKey(nameof(Category))]
-        public string CategoryId { get; set; } = null!;
+        public int CategoryId { get; set; } 
         public virtual Category Category { get; set; } = null!;
 
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stories.Data;
 
@@ -11,9 +12,11 @@ using Stories.Data;
 namespace Stories.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260316080547_InitialDbDesign")]
+    partial class InitialDbDesign
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,24 +140,6 @@ namespace Stories.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "seed-user-id",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "0e3fe523-be7d-4355-995e-f3a5a4f0d8b0",
-                            Email = "admin@site.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@SITE.COM",
-                            NormalizedUserName = "ADMIN@SITE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBQzPxyTzhJH0n8lIzXGhCwGGg179WRr+AXCTt+uPxrjGerPI7aCK74aM1xQhl5asw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "2a8a37c5-b7bb-4799-a8a7-b6b4bb3705ac",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@site.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -268,71 +253,6 @@ namespace Stories.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Biography = "Charles Perrault was a French author best known for laying the foundations of the fairy tale genre with stories such as Cinderella and Sleeping Beauty.",
-                            FirstName = "Charles",
-                            LastName = "Perrault"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Biography = "Hans Christian Andersen was a Danish author famous for his timeless fairy tales including The Little Mermaid, The Ugly Duckling, and The Snow Queen.",
-                            FirstName = "Hans Christian",
-                            LastName = "Andersen"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Biography = "Lewis Carroll was an English writer and mathematician best known for the children's fantasy novel Alice's Adventures in Wonderland.",
-                            FirstName = "Lewis",
-                            LastName = "Carroll"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Biography = "J. M. Barrie was a Scottish novelist and playwright best remembered as the creator of Peter Pan, the boy who never grows up.",
-                            FirstName = "J. M.",
-                            LastName = "Barrie"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Biography = "J. R. R. Tolkien was an English writer and professor famous for his fantasy works including The Hobbit and The Lord of the Rings.",
-                            FirstName = "J. R. R.",
-                            LastName = "Tolkien"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Biography = "Joanna Cole was an American author best known for the educational children's series The Magic School Bus.",
-                            FirstName = "Joanna",
-                            LastName = "Cole"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Biography = "Steve Parker is a British science writer known for creating engaging science books for children and young readers.",
-                            FirstName = "Steve",
-                            LastName = "Parker"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Biography = "Robert Louis Stevenson was a Scottish novelist and poet, well known for works such as Treasure Island and the poetry collection A Child's Garden of Verses.",
-                            FirstName = "Robert Louis",
-                            LastName = "Stevenson"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Biography = "Shel Silverstein was an American writer, poet, and illustrator famous for beloved children's poetry collections such as Where the Sidewalk Ends.",
-                            FirstName = "Shel",
-                            LastName = "Silverstein"
-                        });
                 });
 
             modelBuilder.Entity("Stories.DataModels.Book", b =>
@@ -388,151 +308,6 @@ namespace Stories.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Books");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Annotation = "A magical fairy tale about kindness and hope.",
-                            AuthorId = 1,
-                            CategoryId = 1,
-                            Date = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Cinderella overcomes hardship with the help of magic and kindness.",
-                            PathToAudiobook = "/audio/cinderella.mp3",
-                            PathToCover = "/Images/covers/cinderella.jpg",
-                            Title = "Cinderella",
-                            UserId = "seed-user-id"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Annotation = "A princess escapes the evil queen and finds new friends.",
-                            AuthorId = 1,
-                            CategoryId = 1,
-                            Date = new DateTime(2024, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "A classic story about friendship, courage, and kindness.",
-                            PathToAudiobook = "/audio/snowwhite.mp3",
-                            PathToCover = "/Images/covers/snezhanka.jpg",
-                            Title = "Snow White and the Seven Dwarfs",
-                            UserId = "seed-user-id"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Annotation = "A mermaid dreams of becoming human.",
-                            AuthorId = 2,
-                            CategoryId = 1,
-                            Date = new DateTime(2024, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "A touching fairy tale about dreams, sacrifice, and love.",
-                            PathToAudiobook = "/audio/littlemermaid.mp3",
-                            PathToCover = "/Images/covers/blankCover.jpg",
-                            Title = "The Little Mermaid",
-                            UserId = "seed-user-id"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Annotation = "A curious girl enters a strange magical world.",
-                            AuthorId = 3,
-                            CategoryId = 2,
-                            Date = new DateTime(2024, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Alice explores a fantasy world filled with unusual characters.",
-                            PathToAudiobook = "/audio/alice.mp3",
-                            PathToCover = "/Images/covers/blankCover.jpg",
-                            Title = "Alice in Wonderland",
-                            UserId = "seed-user-id"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Annotation = "The boy who never grows up.",
-                            AuthorId = 4,
-                            CategoryId = 2,
-                            Date = new DateTime(2024, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Peter Pan takes children on adventures in Neverland.",
-                            PathToAudiobook = "/audio/peterpan.mp3",
-                            PathToCover = "/Images/covers/blankCover.jpg",
-                            Title = "Peter Pan",
-                            UserId = "seed-user-id"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Annotation = "A hobbit goes on a great adventure.",
-                            AuthorId = 5,
-                            CategoryId = 2,
-                            Date = new DateTime(2024, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Bilbo Baggins joins a quest to reclaim treasure from a dragon.",
-                            PathToAudiobook = "/audio/hobbit.mp3",
-                            PathToCover = "/Images/covers/hobbit.jpg",
-                            Title = "The Hobbit",
-                            UserId = "seed-user-id"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Annotation = "A fun journey through the human body.",
-                            AuthorId = 6,
-                            CategoryId = 3,
-                            Date = new DateTime(2024, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Children learn science through an exciting adventure.",
-                            PathToAudiobook = "/audio/magicschoolbus.mp3",
-                            PathToCover = "/Images/covers/magicschoolbus.jpg",
-                            Title = "The Magic School Bus: Inside the Human Body",
-                            UserId = "seed-user-id"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Annotation = "Discover planets, stars, and galaxies.",
-                            AuthorId = 7,
-                            CategoryId = 3,
-                            Date = new DateTime(2024, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "A child-friendly introduction to space science.",
-                            PathToAudiobook = "/audio/spacekids.mp3",
-                            PathToCover = "/Images/covers/spacekids.jpg",
-                            Title = "Space for Young Explorers",
-                            UserId = "seed-user-id"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Annotation = "100 things you should know about World Wonders.",
-                            AuthorId = 7,
-                            CategoryId = 3,
-                            Date = new DateTime(2024, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "It takes you on a thrilling tour of mighty monuments and awesome natural features. Exactly 100 facts, accompanied by detailed artwork, bring to life ancient stone giants, undersea cities, and mighty migrations made by living things. ",
-                            PathToAudiobook = "/audio/experiments.mp3",
-                            PathToCover = "/Images/covers/blankCover.jpg",
-                            Title = "World Wonders (100 Things You Should Know About Series)",
-                            UserId = "seed-user-id"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Annotation = "Funny and imaginative children's poems.",
-                            AuthorId = 9,
-                            CategoryId = 4,
-                            Date = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "A beloved collection of humorous and creative poetry.",
-                            PathToAudiobook = "/audio/sidewalkends.mp3",
-                            PathToCover = "/Images/covers/blankCover.jpg",
-                            Title = "Where the Sidewalk Ends",
-                            UserId = "seed-user-id"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Annotation = "Classic poems about childhood.",
-                            AuthorId = 8,
-                            CategoryId = 4,
-                            Date = new DateTime(2024, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "A timeless collection of poems loved by generations.",
-                            PathToAudiobook = "/audio/gardenofverses.mp3",
-                            PathToCover = "/Images/covers/blankCover.jpg",
-                            Title = "A Child's Garden of Verses",
-                            UserId = "seed-user-id"
-                        });
                 });
 
             modelBuilder.Entity("Stories.DataModels.Category", b =>
@@ -551,28 +326,6 @@ namespace Stories.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryName = "Fairy Tales"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryName = "Novels for Children"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryName = "Science"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryName = "Poems"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
