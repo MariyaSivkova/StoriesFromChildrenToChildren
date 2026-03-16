@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Stories.Data;
+using Stories.Services;
 
 namespace Stories.Web
 {
@@ -15,7 +16,6 @@ namespace Stories.Web
             var connectionString = builder.Configuration.GetConnectionString("DevSQLServer") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options =>
             {
@@ -26,6 +26,11 @@ namespace Stories.Web
                 options.Password.RequireUppercase = false;
             })
             .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            builder.Services.AddScoped<IStoriesService, StoriesService>();
+            
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
