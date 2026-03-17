@@ -1,0 +1,25 @@
+﻿@using Stories.ViewModels.Library
+@using Stories.ViewModels.Author
+@model BookDetailsViewModel
+@{
+    ViewData["Title"] = "Book deleted!";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Delete" method="post">
+    <img src="@Model.PathToCover" alt="@Model.Title" class="img-fluid img-thumbnail" />
+
+
+    <h2>Audiobook "@Model.Title", written by @Model.Author.FirstName @Model.Author.LastName, has been deleted!</h2>
+
+    
+    <div class="form-group mt-3">
+        
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

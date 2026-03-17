@@ -44,6 +44,8 @@ namespace Stories.DataModels
         public int CategoryId { get; set; } 
         public virtual Category Category { get; set; } = null!;
 
+        //public bool IsDeleted { get; set; } = false;
+
 
         //TODO at stage 2: 
         //public bool IsApproved { get; set; }

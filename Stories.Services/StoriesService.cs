@@ -182,7 +182,86 @@ namespace Stories.Services
                 throw new ArgumentException("Author not found.");
             }
 
-            book.Authors = await dbContext.Authors
+            return book;
+
+        }
+
+        public async Task<BookEditViewModel?> GetBookEditAsync(int id)
+        {
+            BookEditViewModel? book = await dbContext.Books
+                .Include(r => r.Category)
+                .Include(r => r.Author)
+                .Include(r => r.User)
+                .Where(r => r.Id == id)
+                .Select(r => new BookEditViewModel
+                {
+                    Id = r.Id,
+                    Title = r.Title,
+                    AuthorId = r.AuthorId,
+                    CategoryId = r.CategoryId,
+                    Annotation = r.Annotation,
+                    Date = r.Date,
+                    Description = r.Description,
+                    PathToAudiobook = r.PathToAudiobook,
+                    PathToCover = r.PathToCover,
+                    User = r.User
+                })
+                .FirstOrDefaultAsync();
+
+            if (book == null)
+            {
+                throw new ArgumentException("Author not found.");
+            }
+
+            book.Authors = await GetAllAuthors();
+
+            book.Categories = await GetAllCategories();
+            return book;
+
+        }
+
+        public async Task EditBookAsync(BookEditViewModel model)
+        {
+            Book? book = await dbContext.Books
+                .FirstOrDefaultAsync(a => a.Id == model.Id);
+
+            if (book == null)
+            {
+                throw new ArgumentException("Author not found.");
+            }
+            book.Id = model.Id;
+            book.Annotation = model.Annotation;
+            book.AuthorId = model.AuthorId;
+            book.CategoryId = model.CategoryId;
+            book.Date = model.Date;
+            book.Description = model.Description;
+            book.PathToAudiobook = model.PathToAudiobook;
+            book.PathToCover = model.PathToCover;
+            book.Title = model.Title;
+            book.User = model.User;
+
+            await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<BookEditViewModel> GetBookViewModelAsync()
+        {
+            IEnumerable<AuthorViewModel> authors = await GetAllAuthors();
+
+            IEnumerable<CategoryViewModel> categories = await GetAllCategories();
+
+            BookEditViewModel model = new BookEditViewModel
+            {
+                Categories = categories,
+                Date = DateTime.Now,
+                Authors = authors
+            };
+
+            return model;
+        }
+
+        public async Task<IEnumerable<AuthorViewModel>> GetAllAuthors()
+        {
+            IEnumerable<AuthorViewModel> authors = await dbContext.Authors
                 .AsNoTracking()
                 .Select(ba => new AuthorViewModel
                 {
@@ -192,9 +271,60 @@ namespace Stories.Services
                     Biography = ba.Biography
                 })
                 .ToListAsync();
+            return authors;
+        }
 
-            return book;
+        public async Task<IEnumerable<CategoryViewModel>> GetAllCategories()
+        {
+            IEnumerable<CategoryViewModel> categories = await dbContext.Categories
+                .AsNoTracking()
+                .Select(ca => new CategoryViewModel
+                {
+                    Id = ca.Id,
+                    CategoryName = ca.CategoryName
+                })
+                .ToListAsync();
+            return categories;
+        }
+
+
+        public async Task AddBookAsync(BookEditViewModel model)
+        {
+            Book newBook = new Book
+            {
+                Annotation = model.Annotation,
+                AuthorId = model.AuthorId,
+                CategoryId = model.CategoryId,
+                Date = model.Date,
+                Description = model.Description,
+                PathToAudiobook = model.PathToAudiobook,
+                PathToCover = model.PathToCover,
+                Title = model.Title,
+                UserId = model.UserId
+            };
+
+            dbContext.Books.Add(newBook);
+            await dbContext.SaveChangesAsync();
 
         }
+
+        //public async Task DeleteBookAsync(int id, string userId)
+        //{
+        //    var book = await dbContext.Books
+        //        .FirstOrDefaultAsync(r => r.Id == id && !r.IsDeleted);
+
+        //    if (book == null)
+        //    {
+        //        throw new ArgumentException("Book was not found!");
+        //    }
+
+        //    if (book.UserId != userId)
+        //    {
+        //        throw new UnauthorizedAccessException("You are not authorized to delete this book!");
+        //    }
+
+        //    book.IsDeleted = true;
+        //    await dbContext.SaveChangesAsync();
+        //}
     }
 }

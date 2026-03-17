@@ -44,10 +44,15 @@ namespace Stories.Web.Controllers
             {
                 await service.AddCategoryAsync(model);
             }
-            catch (Exception ex)
+            catch (ArgumentException)
             {
                 return NotFound();
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
 
             return RedirectToAction(nameof(Index));
         }
@@ -72,9 +77,13 @@ namespace Stories.Web.Controllers
             {
                 await service.EditCategoryAsync(model);
             }
-            catch (Exception ex)
+            catch (ArgumentException)
             {
                 return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
             
             return RedirectToAction(nameof(Index));

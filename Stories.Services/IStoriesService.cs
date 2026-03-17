@@ -34,6 +34,17 @@ namespace Stories.Services
         Task<IEnumerable<BookViewModel>> GetAllBooksAsync();
 
         Task<BookDetailsViewModel?> GetBookDetailsAsync(int id);
+        
+        Task<BookEditViewModel?> GetBookEditAsync(int id);
 
+        Task EditBookAsync(BookEditViewModel model);
+
+        Task<BookEditViewModel> GetBookViewModelAsync();
+
+        Task<IEnumerable<AuthorViewModel>> GetAllAuthors();
+        
+        Task<IEnumerable<CategoryViewModel>> GetAllCategories();
+
+        Task AddBookAsync(BookEditViewModel model);
     }
 }

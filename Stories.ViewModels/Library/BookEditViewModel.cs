@@ -8,7 +8,7 @@ using static Stories.DataModels.Common.EntityValidation;
 
 namespace Stories.ViewModels.Library
 {
-    public class BookDetailsViewModel
+    public class BookEditViewModel
     {
         public int Id { get; set; }
 
@@ -30,14 +30,19 @@ namespace Stories.ViewModels.Library
 
         public DateTime Date { get; set; } = DateTime.Now;
 
-        [Required]
-        public virtual IdentityUser User { get; set; } = null!;
+        public virtual IdentityUser? User { get; set; }
+
+        public string? UserId { get; set; }
 
         [Required]
-        public virtual DataModels.Author Author { get; set; } = null!;
+        public int AuthorId { get; set; }
+
+        public IEnumerable<AuthorViewModel>? Authors { get; set; }
 
         [Required]
-        public virtual DataModels.Category Category { get; set; } = null!;
+        public int CategoryId { get; set; }
+
+        public IEnumerable<CategoryViewModel>? Categories { get; set; }
 
 
     }

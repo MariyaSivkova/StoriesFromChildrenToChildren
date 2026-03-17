@@ -3,44 +3,41 @@
 @using Stories.ViewModels.Category
 @model BookEditViewModel
 @{
-    ViewData["Title"] = "Edit Book";
+    ViewData["Title"] = "Add Book";
 }
 
 <h2>@ViewData["Title"]</h2>
 
-<form asp-action="Edit" method="post">
-    <img src="@Model.PathToCover" alt="@Model.Title" class="img-fluid img-thumbnail" />
-
-
+<form asp-action="Add" method="post">
     <div class="form-group">
         <label asp-for="Title" class="control-label"></label>
-        <input asp-for="Title" class="form-control" value=@Model.Title />
+        <input asp-for="Title" class="form-control" value="" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Annotation" class="control-label"></label>
-        <textarea asp-for="Annotation" class="form-control" rows="5">@Model.Annotation</textarea>
+        <textarea asp-for="Annotation" class="form-control" rows="5"></textarea>
         <span asp-validation-for="Annotation" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Description" class="control-label"></label>
-        <textarea asp-for="Description" class="form-control" rows="5">@Model.Description</textarea>
+        <textarea asp-for="Description" class="form-control" rows="5"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
 
     <div class="col-sm-6 mb-2">
         <label asp-for="AuthorId" class="form-label-add-edit">Author</label>
-        <select asp-for="AuthorId" class="form-control" asp-items="@(new SelectList(Model.Authors, "Id", "FirstName", Model.AuthorId))">
+        <select asp-for="AuthorId" class="form-control" asp-items="@(new SelectList(Model.Authors, "Id", "FirstName"))">
         </select>
         <span asp-validation-for="AuthorId" class="text-danger"></span>
     </div>
 
     <div class="col-sm-6 mb-2">
         <label asp-for="CategoryId" class="form-label-add-edit">Category</label>
-        <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(Model.Categories, "Id", "CategoryName", Model.CategoryId))">
+        <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(Model.Categories, "Id", "CategoryName"))">
             <option value="">...</option>
         </select>
         <span asp-validation-for="CategoryId" class="text-danger"></span>
@@ -56,14 +53,14 @@
 
     <div class="form-group">
         <label asp-for="PathToCover" class="control-label"></label>
-        <input asp-for="PathToCover" class="form-control" value=@Model.PathToCover />
+        <input asp-for="PathToCover" class="form-control" value="" />
         <span asp-validation-for="PathToCover" class="text-danger"></span>
     </div>
 
 
     <div class="form-group">
         <label asp-for="PathToAudiobook" class="control-label"></label>
-        <input asp-for="PathToAudiobook" class="form-control" value=@Model.PathToAudiobook />
+        <input asp-for="PathToAudiobook" class="form-control" value="" />
         <span asp-validation-for="PathToAudiobook" class="text-danger"></span>
     </div>
 

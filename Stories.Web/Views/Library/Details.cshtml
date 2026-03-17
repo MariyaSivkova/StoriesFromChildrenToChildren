@@ -19,6 +19,7 @@
                     <a class="btn btn-success" href="@Model.PathToAudiobook" target="_blank">Listen / Download</a>
                 }
                 <a asp-controller="Library" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+                <a asp-controller="Library" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
             </div>
         </div>
 

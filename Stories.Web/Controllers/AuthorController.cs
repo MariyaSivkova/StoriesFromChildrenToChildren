@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Stories.Services;
 using Stories.ViewModels.Author;
+using Stories.ViewModels.Library;
 
 namespace Stories.Web.Controllers
 {
@@ -26,7 +27,7 @@ namespace Stories.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
             return View();
         }
