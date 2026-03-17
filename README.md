@@ -38,4 +38,8 @@ Make sure you have the following installed:
 
 1. Clone the repository:
    git clone: https://github.com/MariyaSivkova/StoriesFromChildrenToChildren.git
-  
+2. Open Visual Studio Solution.
+3. Open Package Manager Console and run Update-Database to create database for the application.
+4. Build and run the application.
+5. The login for the seeded user is a@a.com, password: 123456
+   
