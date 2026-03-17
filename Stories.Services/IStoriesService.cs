@@ -46,5 +46,7 @@ namespace Stories.Services
         Task<IEnumerable<CategoryViewModel>> GetAllCategories();
 
         Task AddBookAsync(BookEditViewModel model);
+
+        Task DeleteBookAsync(int id, string userId);
     }
 }

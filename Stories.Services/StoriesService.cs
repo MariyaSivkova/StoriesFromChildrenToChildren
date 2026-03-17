@@ -308,23 +308,23 @@ namespace Stories.Services
 
         }
 
-        //public async Task DeleteBookAsync(int id, string userId)
-        //{
-        //    var book = await dbContext.Books
-        //        .FirstOrDefaultAsync(r => r.Id == id && !r.IsDeleted);
+        public async Task DeleteBookAsync(int id, string userId)
+        {
+            var book = await dbContext.Books
+                .FirstOrDefaultAsync(r => r.Id == id);
 
-        //    if (book == null)
-        //    {
-        //        throw new ArgumentException("Book was not found!");
-        //    }
+            if (book == null)
+            {
+                throw new ArgumentException("Book was not found!");
+            }
 
-        //    if (book.UserId != userId)
-        //    {
-        //        throw new UnauthorizedAccessException("You are not authorized to delete this book!");
-        //    }
+            if (book.UserId != userId)
+            {
+                throw new UnauthorizedAccessException("You are not authorized to delete this book!");
+            }
 
-        //    book.IsDeleted = true;
-        //    await dbContext.SaveChangesAsync();
-        //}
+            dbContext.Books.Remove(book);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

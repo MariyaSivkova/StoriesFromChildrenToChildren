@@ -149,6 +149,8 @@ namespace Stories.Web.Controllers
                 {
                     return NotFound();
                 }
+                await service.DeleteBookAsync(id, book.User.Id);
+
 
                 return View(book);
             }
