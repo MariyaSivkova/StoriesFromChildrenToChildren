@@ -14,7 +14,7 @@ namespace Stories.DataModels
         public const string DefaultAvatar = "~/Images/avatars/default-avatar.jpg";
         public const string AvatarsFolder = "~/Images/avatars/";
 
-        public const string AudiobooksFolder = "~/Audiobooks/";
+        public const string AudiobooksFolder = "~/audio/";
 
 
 

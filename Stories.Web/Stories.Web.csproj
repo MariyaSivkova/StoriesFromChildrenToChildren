@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Views\User\" />
-    <Folder Include="wwwroot\Audiobooks\" />
     <Folder Include="wwwroot\Images\avatars\" />
   </ItemGroup>
 

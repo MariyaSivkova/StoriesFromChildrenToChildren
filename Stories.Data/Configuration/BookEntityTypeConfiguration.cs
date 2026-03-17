@@ -14,7 +14,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 1,
                 Title = "Cinderella",
-                PathToAudiobook = "/audio/cinderella.mp3",
+                PathToAudiobook = "/audio/cinderella.m4a",
                 PathToCover = "/Images/covers/cinderella.jpg",
                 Annotation = "A magical fairy tale about kindness and hope.",
                 Description = "Cinderella overcomes hardship with the help of magic and kindness.",
@@ -27,7 +27,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 2,
                 Title = "Snow White and the Seven Dwarfs",
-                PathToAudiobook = "/audio/snowwhite.mp3",
+                PathToAudiobook = "/audio/snowwhite.m4a",
                 PathToCover = "/Images/covers/snezhanka.jpg",
                 Annotation = "A princess escapes the evil queen and finds new friends.",
                 Description = "A classic story about friendship, courage, and kindness.",
@@ -40,7 +40,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 3,
                 Title = "The Little Mermaid",
-                PathToAudiobook = "/audio/littlemermaid.mp3",
+                PathToAudiobook = "/audio/littlemermaid.m4a",
                 PathToCover = "/Images/covers/blankCover.jpg",
                 Annotation = "A mermaid dreams of becoming human.",
                 Description = "A touching fairy tale about dreams, sacrifice, and love.",
@@ -53,7 +53,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 4,
                 Title = "Alice in Wonderland",
-                PathToAudiobook = "/audio/alice.mp3",
+                PathToAudiobook = "/audio/alice.m4a",
                 PathToCover = "/Images/covers/blankCover.jpg",
                 Annotation = "A curious girl enters a strange magical world.",
                 Description = "Alice explores a fantasy world filled with unusual characters.",
@@ -66,7 +66,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 5,
                 Title = "Peter Pan",
-                PathToAudiobook = "/audio/peterpan.mp3",
+                PathToAudiobook = "/audio/peterpan.m4a",
                 PathToCover = "/Images/covers/blankCover.jpg",
                 Annotation = "The boy who never grows up.",
                 Description = "Peter Pan takes children on adventures in Neverland.",
@@ -79,7 +79,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 6,
                 Title = "The Hobbit",
-                PathToAudiobook = "/audio/hobbit.mp3",
+                PathToAudiobook = "/audio/hobbit.m4a",
                 PathToCover = "/Images/covers/hobbit.jpg",
                 Annotation = "A hobbit goes on a great adventure.",
                 Description = "Bilbo Baggins joins a quest to reclaim treasure from a dragon.",
@@ -92,7 +92,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 7,
                 Title = "The Magic School Bus: Inside the Human Body",
-                PathToAudiobook = "/audio/magicschoolbus.mp3",
+                PathToAudiobook = "/audio/magicschoolbus.m4a",
                 PathToCover = "/Images/covers/magicschoolbus.jpg",
                 Annotation = "A fun journey through the human body.",
                 Description = "Children learn science through an exciting adventure.",
@@ -105,7 +105,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 8,
                 Title = "Space for Young Explorers",
-                PathToAudiobook = "/audio/spacekids.mp3",
+                PathToAudiobook = "/audio/spacekids.m4a",
                 PathToCover = "/Images/covers/spacekids.jpg",
                 Annotation = "Discover planets, stars, and galaxies.",
                 Description = "A child-friendly introduction to space science.",
@@ -118,7 +118,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 9,
                 Title = "World Wonders (100 Things You Should Know About Series)",
-                PathToAudiobook = "/audio/experiments.mp3",
+                PathToAudiobook = "/audio/experiments.m4a",
                 PathToCover = "/Images/covers/blankCover.jpg",
                 Annotation = "100 things you should know about World Wonders.",
                 Description = "It takes you on a thrilling tour of mighty monuments and awesome natural features. Exactly 100 facts, accompanied by detailed artwork, bring to life ancient stone giants, undersea cities, and mighty migrations made by living things. ",
@@ -131,7 +131,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 10,
                 Title = "Where the Sidewalk Ends",
-                PathToAudiobook = "/audio/sidewalkends.mp3",
+                PathToAudiobook = "/audio/sidewalkends.m4a",
                 PathToCover = "/Images/covers/blankCover.jpg",
                 Annotation = "Funny and imaginative children's poems.",
                 Description = "A beloved collection of humorous and creative poetry.",
@@ -144,7 +144,7 @@ namespace Stories.Data.Configuration
             {
                 Id = 11,
                 Title = "A Child's Garden of Verses",
-                PathToAudiobook = "/audio/gardenofverses.mp3",
+                PathToAudiobook = "/audio/gardenofverses.m4a",
                 PathToCover = "/Images/covers/blankCover.jpg",
                 Annotation = "Classic poems about childhood.",
                 Description = "A timeless collection of poems loved by generations.",
