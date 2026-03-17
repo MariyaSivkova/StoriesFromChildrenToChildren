@@ -1,6 +1,5 @@
 ﻿using Stories.DataModels;
 using Stories.ViewModels.Author;
-using Stories.ViewModels.Category;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,21 +11,14 @@ namespace Stories.ViewModels.Library
 {
     public class BookViewModel
     {
-        public int Id { get; set; } 
 
+        public int Id { get; set; }
 
+        [Required]
         public string Title { get; set; } = null!;
 
+        public string PathToCover { get; set; } = StoriesConstants.DefaultCover;
 
-        public List<AuthorViewModel> Authors { get; set; } = null!;
-
-
-        public List<CategoryViewModel> Categories { get; set; } = null!;
-
-
-        public string Annotation { get; set; } = null!;
-
-        public DateTime Date { get; set; } 
-
+        public string Anotation { get; set; } = null!;
     }
 }

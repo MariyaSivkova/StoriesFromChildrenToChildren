@@ -138,5 +138,63 @@ namespace Stories.Services
 
             await dbContext.SaveChangesAsync();
         }
+
+// About Lybrary:
+
+        public async Task<IEnumerable<BookViewModel>> GetAllBooksAsync()
+        {
+            return await dbContext.Books
+                .AsNoTracking()
+                .Select(r => new BookViewModel
+                {
+                    Id = r.Id,
+                    Title = r.Title,
+                    PathToCover = r.PathToCover,
+                    Anotation = r.Annotation
+                })
+                .ToListAsync();
+        }
+
+        public async Task<BookDetailsViewModel?> GetBookDetailsAsync(int id)
+        {
+            BookDetailsViewModel? book = await dbContext.Books
+                .Include(r => r.Category)
+                .Include(r => r.Author)
+                .Include(r => r.User)
+                .Where(r => r.Id == id)
+                .Select(r => new BookDetailsViewModel
+                {
+                    Id = r.Id,
+                    Title = r.Title,
+                    Annotation = r.Annotation,
+                    Date = r.Date,
+                    Description = r.Description,
+                    PathToAudiobook = r.PathToAudiobook,
+                    PathToCover = r.PathToCover,
+                    Category = r.Category,
+                    Author = r.Author,
+                    User = r.User
+                })
+                .FirstOrDefaultAsync();
+            
+            if (book == null)
+            {
+                throw new ArgumentException("Author not found.");
+            }
+
+            book.Authors = await dbContext.Authors
+                .AsNoTracking()
+                .Select(ba => new AuthorViewModel
+                {
+                    Id = ba.Id,
+                    FirstName = ba.FirstName,
+                    LastName = ba.LastName,
+                    Biography = ba.Biography
+                })
+                .ToListAsync();
+
+            return book;
+
+        }
     }
 }

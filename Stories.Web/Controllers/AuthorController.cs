@@ -43,9 +43,13 @@ namespace Stories.Web.Controllers
             {
                 await service.AddAuthorAsync(model);
             }
-            catch (Exception ex)
+            catch (ArgumentException)
             {
                 return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
 
             return RedirectToAction(nameof(Index));
@@ -71,9 +75,13 @@ namespace Stories.Web.Controllers
             {
                 await service.EditAuthorAsync(model);
             }
-            catch (Exception ex)
+            catch (ArgumentException)
             {
                 return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
             
             return RedirectToAction(nameof(Index));

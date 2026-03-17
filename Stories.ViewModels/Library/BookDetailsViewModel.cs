@@ -1,11 +1,45 @@
-﻿using Stories.ViewModels.Author;
+﻿using Microsoft.AspNetCore.Identity;
+using Stories.DataModels;
+using Stories.ViewModels.Author;
 using System.ComponentModel.DataAnnotations;
-//using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations.Schema;
+using static Stories.DataModels.Common.EntityValidation;
 
 namespace Stories.ViewModels.Library
 {
     public class BookDetailsViewModel
     {
-        
+        public int Id { get; set; }
+
+        [Required]
+        [MaxLength(BookTitleMaxLength)]
+        public string Title { get; set; } = null!;
+
+        [Required]
+        public string PathToAudiobook { get; set; } = null!;
+
+        public string PathToCover { get; set; } = StoriesConstants.DefaultCover;
+
+        [Required]
+        [MaxLength(BookAnnotationMaxLength)]
+        public string Annotation { get; set; } = null!;
+
+        [MaxLength(BookDescriptionMaxLength)]
+        public string Description { get; set; } = string.Empty;
+
+        public DateTime Date { get; set; } = DateTime.Now;
+
+        [Required]
+        public virtual IdentityUser User { get; set; } = null!;
+
+        public List<AuthorViewModel> Authors { get; set; } = null!;
+
+        [Required]
+        public virtual DataModels.Author Author { get; set; } = null!;
+
+        [Required]
+        public virtual DataModels.Category Category { get; set; } = null!;
+
+
     }
 }

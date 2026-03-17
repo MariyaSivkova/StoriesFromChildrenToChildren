@@ -12,6 +12,7 @@ namespace Stories.Services
 {
     public interface IStoriesService
     {
+// Author service methods
         Task<IEnumerable<AuthorViewModel>> GetAllAuthorsAsync();
 
         Task AddAuthorAsync(AuthorAddViewModel model);
@@ -20,7 +21,7 @@ namespace Stories.Services
 
         Task EditAuthorAsync(AuthorViewModel model);
 
-
+// Category service methods
         Task<IEnumerable<CategoryViewModel>> GetAllCategoriesAsync();
 
         Task AddCategoryAsync(CategoryAddViewModel model);
@@ -28,5 +29,11 @@ namespace Stories.Services
         Task<CategoryViewModel> GetCategoryForEditAsync(int id);
 
         Task EditCategoryAsync(CategoryViewModel model);
+
+// Library service methods
+        Task<IEnumerable<BookViewModel>> GetAllBooksAsync();
+
+        Task<BookDetailsViewModel?> GetBookDetailsAsync(int id);
+
     }
 }
